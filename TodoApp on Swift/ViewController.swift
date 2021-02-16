@@ -7,9 +7,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController{
     
+    @IBOutlet var textField: UITextField!
     @IBOutlet var datePicker: UIDatePicker!
+    let saveData: UserDefaults = UserDefaults.standard
+    var memoCount: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,9 +20,6 @@ class ViewController: UIViewController {
         datePicker.timeZone = NSTimeZone.local
         datePicker.datePickerMode = .date
         datePicker.locale = Locale(identifier: "ja_JP")
-        
-        
-
         
         // Do any additional setup after loading the view.
     }
@@ -29,6 +29,7 @@ class ViewController: UIViewController {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyyMMdd"
         print((formatter.string(from: datePicker.date)))
+        saveData.set(textField, forKey: formatter.string(from: datePicker.date))
     }
 }
 
