@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Gbh-bU-b4u">
-
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kkI-pD-dbk">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -62,25 +61,23 @@
                     <connections>
                         <outlet property="datePicker" destination="Ws6-Du-Jun" id="ecy-hw-bUW"/>
                         <outlet property="textField" destination="qyS-y5-RDY" id="j8y-tK-oHD"/>
-                        <segue destination="EyJ-2l-5fD" kind="show" id="m7K-hX-tIl"/>
-
+                        <segue destination="EyJ-2l-5fD" kind="show" identifier="toBuildTable" id="69C-Zb-d8C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1715.9420289855075" y="93.75"/>
+            <point key="canvasLocation" x="4488" y="94"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="w33-O3-dyT">
             <objects>
                 <viewController id="EyJ-2l-5fD" customClass="TableViewController" customModule="TodoApp_on_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4BM-NS-5lS">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qqd-UU-5sq">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="JpW-Oa-rBM">
@@ -104,35 +101,45 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="D6H-Qm-QYP">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="vOa-Pd-wAh"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="vOa-Pd-wAh">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="show" id="tnL-M5-poL"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="table" destination="Qqd-UU-5sq" id="CbA-4E-gbd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g1X-1g-sX6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2749" y="94"/>
+            <point key="canvasLocation" x="3657.971014492754" y="93.75"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="Dan-7d-0m3">
+        <scene sceneID="52b-Cl-GSV">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gbh-bU-b4u" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kkI-pD-dbk" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ux1-Yp-3g5">
+                    <navigationItem key="navigationItem" id="uiB-yn-Hz6"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WEC-20-hwQ">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="WVd-si-pxQ"/>
+                        <segue destination="EyJ-2l-5fD" kind="relationship" relationship="rootViewController" id="5JV-yD-lGN"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ych-3H-cag" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HPA-fC-iuB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="805.79710144927537" y="93.75"/>
+            <point key="canvasLocation" x="2747.826086956522" y="93.75"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="tnL-M5-poL"/>
+        <segue reference="69C-Zb-d8C"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
