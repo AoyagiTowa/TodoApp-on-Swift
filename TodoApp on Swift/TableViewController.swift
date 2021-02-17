@@ -10,25 +10,32 @@ import UIKit
 class TableViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet var table: UITableView!
-    var cellArray = [Int]()
+    var contentArray = [String]()
+    var keyArray =  [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        cellArray.append(0)
-        
+
+        let saveData: UserDefaults = UserDefaults.standard
+        keyArray = saveData.object(forKey: "key") as! [String]
+        print(keyArray)
+        for i in keyArray {
+            let contentValue = saveData.object(forKey: i) 
+            contentArray.append(contentValue as! String)
+        }
         table.dataSource = self
+        
 
         // Do any additional setup after loading the view.
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cellArray.count
+        return contentArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
-        
+        cell?.textLabel?.text = contentArray[indexPath.row]
         return cell!
     }
     

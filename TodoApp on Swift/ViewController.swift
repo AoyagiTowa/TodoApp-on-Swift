@@ -12,7 +12,8 @@ class ViewController: UIViewController{
     @IBOutlet var textField: UITextField!
     @IBOutlet var datePicker: UIDatePicker!
     let saveData: UserDefaults = UserDefaults.standard
-    var memoCount: Int = 0
+    var keyArray: [String] = []
+    var saveCount = Int.random(in: 1000...9999)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,10 @@ class ViewController: UIViewController{
         datePicker.timeZone = NSTimeZone.local
         datePicker.datePickerMode = .date
         datePicker.locale = Locale(identifier: "ja_JP")
+        let saveData: UserDefaults = UserDefaults.standard
+        if saveData.object(forKey: "key") as? [String] != nil {
+            keyArray = saveData.object(forKey: "key") as! [String]
+        }
         
         // Do any additional setup after loading the view.
     }
@@ -28,8 +33,13 @@ class ViewController: UIViewController{
     @IBAction func get() {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyyMMdd"
-        print((formatter.string(from: datePicker.date)))
-        saveData.set(textField, forKey: formatter.string(from: datePicker.date))
+        saveData.set(textField.text, forKey: formatter.string(from: datePicker.date) + String(saveCount))
+        keyArray.append(formatter.string(from: datePicker.date) + String(saveCount))
+        saveData.set(keyArray, forKey: "key")
+        self.performSegue(withIdentifier: "toBuildTable", sender: nil)
+        print(keyArray)
+        
     }
+    
 }
 
