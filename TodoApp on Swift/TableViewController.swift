@@ -7,12 +7,14 @@
 
 import UIKit
 
-class TableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     
     @IBOutlet var table: UITableView!
     @IBOutlet var button: UIButton!
-    var contentArray = [String]()
+    //var contentArray = [String]()
     var keyArray =  [String]()
+    var query_word: String = ""
+    var content_array: [Content] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,10 +22,11 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
 
         let saveData: UserDefaults = UserDefaults.standard
         keyArray = saveData.object(forKey: "key") as! [String]
-        print(keyArray)
         for i in keyArray {
             let contentValue = saveData.object(forKey: i) 
-            contentArray.append(contentValue as! String)
+            //contentArray.append(contentValue as! String)
+            content_array.append(Content(contents: contentValue as! String, datekeys: i))
+            
         }
         table.dataSource = self
         table.delegate = self
@@ -33,18 +36,61 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contentArray.count
+        return content_array.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
-        cell?.textLabel?.text = contentArray[indexPath.row]
+        cell?.textLabel?.text = content_array[indexPath.row].content
         return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
+    func serch(query: String){
+        for word in content_array{
+            if word.content == query{
+                content_array.removeAll()
+                content_array.append(Content(contents: word.content, datekeys: word.datekey))
+                table.reloadData()
+            }
+        }
+    }
+    func sorted_Array() {
+        content_array.sort{ $0.content > $1.content}
+        table.reloadData()
+        
+    }
+    
+    
+    @IBAction func serch_sorted() {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+                alert.title = "メモを検索・並び替えできます"
+
+        alert.addTextField(configurationHandler: { [self](textField) -> Void in
+                    textField.delegate = self
+                    query_word = textField.text!
+
+                })
+        alert.addAction(
+                    UIAlertAction(
+                        title: "検索",
+                        style: .default,
+                        handler: {action in self.serch(query: self.query_word)
+                })
+                )
+        alert.addAction(
+                    UIAlertAction(
+                        title: "日付順",
+                        style: .default,
+                        handler: {action in self.sorted_Array()
+                })
+                )
+        present(alert, animated: true, completion: nil)
+    }
+    
+   
     
     
 
