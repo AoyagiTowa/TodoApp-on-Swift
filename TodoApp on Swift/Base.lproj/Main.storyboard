@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Gbh-bU-b4u">
+
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -62,6 +63,7 @@
                         <outlet property="datePicker" destination="Ws6-Du-Jun" id="ecy-hw-bUW"/>
                         <outlet property="textField" destination="qyS-y5-RDY" id="j8y-tK-oHD"/>
                         <segue destination="EyJ-2l-5fD" kind="show" id="m7K-hX-tIl"/>
+
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -73,11 +75,12 @@
             <objects>
                 <viewController id="EyJ-2l-5fD" customClass="TableViewController" customModule="TodoApp_on_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4BM-NS-5lS">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qqd-UU-5sq">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="JpW-Oa-rBM">
@@ -104,7 +107,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="vOa-Pd-wAh"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="table" destination="Qqd-UU-5sq" id="ann-7a-21b"/>
+                        <outlet property="table" destination="Qqd-UU-5sq" id="CbA-4E-gbd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g1X-1g-sX6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
