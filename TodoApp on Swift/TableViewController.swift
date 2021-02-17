@@ -7,14 +7,16 @@
 
 import UIKit
 
-class TableViewController: UIViewController, UITableViewDataSource {
+class TableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet var table: UITableView!
+    @IBOutlet var button: UIButton!
     var contentArray = [String]()
     var keyArray =  [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        button.layer.cornerRadius = 32
 
         let saveData: UserDefaults = UserDefaults.standard
         keyArray = saveData.object(forKey: "key") as! [String]
@@ -24,6 +26,7 @@ class TableViewController: UIViewController, UITableViewDataSource {
             contentArray.append(contentValue as! String)
         }
         table.dataSource = self
+        table.delegate = self
         
 
         // Do any additional setup after loading the view.
@@ -39,6 +42,9 @@ class TableViewController: UIViewController, UITableViewDataSource {
         return cell!
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
     
     
 
