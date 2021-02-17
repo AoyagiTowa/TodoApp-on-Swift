@@ -7,14 +7,17 @@
 
 import UIKit
 
+
 class TableViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet var table: UITableView!
+    @IBOutlet var button: UIButton!
     var contentArray = [String]()
     var keyArray =  [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        button.layer.cornerRadius = 32
 
         let saveData: UserDefaults = UserDefaults.standard
         keyArray = saveData.object(forKey: "key") as! [String]
