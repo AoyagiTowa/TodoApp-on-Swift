@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8A31EFF625DC0B56001D9709 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A31EFF525DC0B56001D9709 /* TableViewController.swift */; };
 		8A67C4F925DD716B001DB762 /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A67C4F825DD716B001DB762 /* Content.swift */; };
+		8A67C4FC25DEBAE2001DB762 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A67C4FB25DEBAE2001DB762 /* EditViewController.swift */; };
 		8ADF13BD25DA458F005949B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADF13BC25DA458F005949B7 /* AppDelegate.swift */; };
 		8ADF13BF25DA458F005949B7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADF13BE25DA458F005949B7 /* SceneDelegate.swift */; };
 		8ADF13C125DA458F005949B7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ADF13C025DA458F005949B7 /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		8A31EFF525DC0B56001D9709 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		8A67C4F825DD716B001DB762 /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
+		8A67C4FB25DEBAE2001DB762 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		8ADF13B925DA458F005949B7 /* TodoApp on Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TodoApp on Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ADF13BC25DA458F005949B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ADF13BE25DA458F005949B7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				8ADF13CA25DA4591005949B7 /* Info.plist */,
 				8A31EFF525DC0B56001D9709 /* TableViewController.swift */,
 				8A67C4F825DD716B001DB762 /* Content.swift */,
+				8A67C4FB25DEBAE2001DB762 /* EditViewController.swift */,
 			);
 			path = "TodoApp on Swift";
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 			files = (
 				8ADF13C125DA458F005949B7 /* ViewController.swift in Sources */,
 				8ADF13BD25DA458F005949B7 /* AppDelegate.swift in Sources */,
+				8A67C4FC25DEBAE2001DB762 /* EditViewController.swift in Sources */,
 				8ADF13BF25DA458F005949B7 /* SceneDelegate.swift in Sources */,
 				8A67C4F925DD716B001DB762 /* Content.swift in Sources */,
 				8A31EFF625DC0B56001D9709 /* TableViewController.swift in Sources */,

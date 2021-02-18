@@ -57,8 +57,13 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
             }
         }
     }
-    func sorted_Array() {
-        content_array.sort{ $0.content > $1.content}
+    func sorted_name_Array() {
+        content_array.sort{ $0.content < $1.content}
+        table.reloadData()
+        
+    }
+    func sorted_date_Array() {
+        content_array.sort{ $0.datekey > $1.datekey}
         table.reloadData()
         
     }
@@ -82,9 +87,16 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
                 )
         alert.addAction(
                     UIAlertAction(
+                        title: "名前順",
+                        style: .default,
+                        handler: {action in self.sorted_name_Array()
+                })
+                )
+        alert.addAction(
+                    UIAlertAction(
                         title: "日付順",
                         style: .default,
-                        handler: {action in self.sorted_Array()
+                        handler: {action in self.sorted_date_Array()
                 })
                 )
         present(alert, animated: true, completion: nil)
