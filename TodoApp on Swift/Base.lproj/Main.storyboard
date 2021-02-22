@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Edit View Controller-->
         <scene sceneID="jAf-Mz-gxV">
             <objects>
-                <viewController id="OpK-p5-MCo" sceneMemberID="viewController">
+                <viewController id="OpK-p5-MCo" customClass="EditViewController" customModule="TodoApp_on_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JbI-4W-PTU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,30 +24,32 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="E9K-Ac-4lk">
-                                <rect key="frame" x="0.0" y="358" width="414" height="216"/>
-                                <locale key="locale" localeIdentifier="ja_JP"/>
-                            </datePicker>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Az2-my-60s"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="gi7-YT-num" firstAttribute="top" secondItem="Az2-my-60s" secondAttribute="top" constant="120" id="HeY-DF-95G"/>
-                            <constraint firstItem="Az2-my-60s" firstAttribute="trailing" secondItem="E9K-Ac-4lk" secondAttribute="trailing" id="Xe4-BO-S95"/>
-                            <constraint firstItem="E9K-Ac-4lk" firstAttribute="leading" secondItem="Az2-my-60s" secondAttribute="leading" id="kwE-5P-gLd"/>
-                            <constraint firstItem="E9K-Ac-4lk" firstAttribute="centerX" secondItem="JbI-4W-PTU" secondAttribute="centerX" id="oqE-1v-M1I"/>
-                            <constraint firstItem="E9K-Ac-4lk" firstAttribute="top" secondItem="gi7-YT-num" secondAttribute="bottom" constant="120" id="p0a-zN-oE1"/>
                             <constraint firstItem="gi7-YT-num" firstAttribute="centerX" secondItem="JbI-4W-PTU" secondAttribute="centerX" id="wpV-8A-8oK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="SJu-ux-JcQ">
+                        <barButtonItem key="leftBarButtonItem" title="削除" id="YaT-Z6-ena">
+                            <color key="tintColor" red="1" green="0.18901177259999999" blue="0.19036659710000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="delete" destination="OpK-p5-MCo" id="NCg-qY-J5i"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="iBb-RP-n2H">
                             <connections>
-                                <action selector="get" destination="BYZ-38-t0r" id="ozZ-Md-wQQ"/>
+                                <action selector="save" destination="OpK-p5-MCo" id="6RP-B6-Tgd"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="textField" destination="gi7-YT-num" id="IrS-4y-55X"/>
+                        <segue destination="EyJ-2l-5fD" kind="show" identifier="ToBuild" id="6A1-TR-pya"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MXl-eD-eGG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -160,6 +162,7 @@
                     <connections>
                         <outlet property="button" destination="f5P-1a-tHQ" id="roL-Vv-hli"/>
                         <outlet property="table" destination="ctT-BK-XOs" id="08z-6o-Myn"/>
+                        <segue destination="OpK-p5-MCo" kind="show" identifier="toEdit" id="0fi-bA-bWM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g1X-1g-sX6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -187,8 +190,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="g6g-Lp-MCs"/>
-        <segue reference="69C-Zb-d8C"/>
+        <segue reference="6A1-TR-pya"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="plus" catalog="system" width="128" height="113"/>
