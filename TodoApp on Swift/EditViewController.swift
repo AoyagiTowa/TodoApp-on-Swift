@@ -26,6 +26,9 @@ class EditViewController: UIViewController {
     }
     
     @IBAction func save(){
+        if textField.text == nil {
+            return
+        }
         saveData.set(textField.text, forKey: segue_key)
         self.performSegue(withIdentifier: "ToBuild", sender: nil)
     }
