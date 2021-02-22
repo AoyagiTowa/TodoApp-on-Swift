@@ -15,23 +15,23 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     var keyArray =  [String]()
     var query_word: String = ""
     var content_array: [Content] = []
-
+    var segue_toKey: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         button.layer.cornerRadius = 32
-
+        
         let saveData: UserDefaults = UserDefaults.standard
         keyArray = saveData.object(forKey: "key") as! [String]
         for i in keyArray {
             let contentValue = saveData.object(forKey: i) 
             //contentArray.append(contentValue as! String)
             content_array.append(Content(contents: contentValue as! String, datekeys: i))
-            
         }
         table.dataSource = self
         table.delegate = self
         
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -46,6 +46,8 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        segue_toKey = keyArray[indexPath.row]
+        performSegue(withIdentifier: "toEdit", sender: nil)
         
     }
     func serch(query: String){
@@ -71,49 +73,57 @@ class TableViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     @IBAction func serch_sorted() {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
-                alert.title = "メモを検索・並び替えできます"
-
+        alert.title = "メモを検索・並び替えできます"
+        
         alert.addTextField(configurationHandler: { [self](textField) -> Void in
-                    textField.delegate = self
-                    query_word = textField.text!
-
-                })
+            textField.delegate = self
+            query_word = textField.text!
+            
+        })
         alert.addAction(
-                    UIAlertAction(
-                        title: "検索",
-                        style: .default,
-                        handler: {action in self.serch(query: self.query_word)
+            UIAlertAction(
+                title: "検索",
+                style: .default,
+                handler: {action in self.serch(query: self.query_word)
                 })
-                )
+        )
         alert.addAction(
-                    UIAlertAction(
-                        title: "名前順",
-                        style: .default,
-                        handler: {action in self.sorted_name_Array()
+            UIAlertAction(
+                title: "名前順",
+                style: .default,
+                handler: {action in self.sorted_name_Array()
                 })
-                )
+        )
         alert.addAction(
-                    UIAlertAction(
-                        title: "日付順",
-                        style: .default,
-                        handler: {action in self.sorted_date_Array()
+            UIAlertAction(
+                title: "日付順",
+                style: .default,
+                handler: {action in self.sorted_date_Array()
                 })
-                )
+        )
         present(alert, animated: true, completion: nil)
     }
     
-   
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "toEdit" {
+            let next = segue.destination as? EditViewController
+            next?.segue_key = self.segue_toKey
+        }
     }
-    */
-
+    
+    
+    
+    
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

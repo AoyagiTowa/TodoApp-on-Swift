@@ -14,7 +14,7 @@ class ViewController: UIViewController{
     let saveData: UserDefaults = UserDefaults.standard
     var keyArray: [String] = []
     var saveCount = Int.random(in: 1000...9999)
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         datePicker.preferredDatePickerStyle = .wheels
@@ -37,7 +37,6 @@ class ViewController: UIViewController{
         keyArray.append(formatter.string(from: datePicker.date) + String(saveCount))
         saveData.set(keyArray, forKey: "key")
         self.performSegue(withIdentifier: "toBuildTable", sender: nil)
-        print(keyArray)
         
     }
     
